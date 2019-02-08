@@ -16,10 +16,8 @@ const cachedBundleUrls = new Map();
 export default async function deltaUrlToBlobUrl(deltaUrl) {
   const client = DeltaPatcher.get(deltaUrl);
 
-  const lastBundleId = client.getLastBundleId();
-
-  const deltaBundleId = lastBundleId
-    ? `${lastBundleId.indexOf('?') === -1 ? '?' : '&'}deltaBundleId=${lastBundleId}`
+  const deltaBundleId = client.getLastBundleId()
+    ? `&deltaBundleId=${client.getLastBundleId()}`
     : '';
 
 
